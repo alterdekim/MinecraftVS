@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@EnableConfigurationProperties(StorageProperties.class)
 public class FileServerController {
 
     @Autowired
