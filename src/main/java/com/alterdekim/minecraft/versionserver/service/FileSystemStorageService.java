@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -91,6 +92,17 @@ public class FileSystemStorageService implements StorageService {
             }
         }
         catch (Exception e) {
+            throw new StorageFileNotFoundException("Could not read file: " + filename, e);
+        }
+    }
+
+    @Override
+    public byte[] loadAsByteArray(String filename) {
+        try {
+            File f = new File(filename);
+            if (!f.exists()) throw new StorageFileNotFoundException("Could not read file: " + filename);
+            return Files.readAllBytes(Path.of(filename));
+        } catch (Exception e) {
             throw new StorageFileNotFoundException("Could not read file: " + filename, e);
         }
     }

@@ -8,4 +8,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ServerConfig {
     @Value("${minevs.csv_path}") private String csvPath;
+    @Value("${minevs.http_path}") private String httpPath;
 }
