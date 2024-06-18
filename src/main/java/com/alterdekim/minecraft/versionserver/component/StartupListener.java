@@ -36,7 +36,7 @@ public class StartupListener {
                     .toList();
             VersionsDTO dto = new VersionsDTO();
             dto.setVersions(vers);
-           // dto.setLatest(new LatestVersion(vers.get(0).getId(), vers.get(0).getId()));
+            dto.setLatest(new LatestVersion());
             config.setVersionsDTO(dto);
             config.setHttpPath(serverConfig.getHttpPath());
         } catch (Exception e) {
